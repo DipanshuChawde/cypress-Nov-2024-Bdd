@@ -11,21 +11,45 @@ When("I type ca in seachbox and click on search button", () => {
 })
 
 And("I select cashwe and add to cart", () => {
-    cy.get('[class="products"] > .product').each((el, idx) => {
-        //cy.log(el.find('h4').text())
-        if (el.find('h4').text().includes('Cashews')) {
-            cy.get('[class="product-action"] >button').eq(idx).click()
-        }
+    // cy.get('[class="products"] > .product').each((el, idx) => {
+    //     //cy.log(el.find('h4').text())
+    //     if (el.find('h4').text().includes('Cashews')) {
+    //         cy.get('[class="product-action"] >button').eq(idx).click()
+    //     }
+    // })
+    //-----------------------------------
+    let products = ["Cauliflower", "Cashews"]
+    products.forEach((el) => {
+        cy.get('[class="products"] > .product').contains(el).parent().contains('ADD TO CART').click()
+
     })
+    // cy.get('[class="products"] > .product').contains('Cauliflower').parent().contains('ADD TO CART').click()
+    //---------------------
 })
 
 And("I Proceed to checkout", () => {
-    cy.get('[class="cart-icon"]').click()
+    // cy.get('[class="cart-icon"]').click()
+    // cy.contains('PROCEED TO CHECKOUT').click()
+    // cy.get('table[class="cartTable"] > tbody >tr').each((el, idx) => {
+    //     //cy.log(el.find('td > [class="product-name"]').text())
+    //     expect(el.find('td > [class="product-name"]').text()).includes('Cashews')
+    // })
+
+    // cy.contains('Place Order').click()
+    // cy.wait(2000)
+    // cy.get('select').select('India')
+    // cy.get('[type="checkbox"]').click()
+    // cy.contains('Proceed').click()
+    // cy.wait(1000)
+//-----------------------
+let products = ["Cauliflower","Cashews"]
+cy.get('[class="cart-icon"]').click()
     cy.contains('PROCEED TO CHECKOUT').click()
     cy.get('table[class="cartTable"] > tbody >tr').each((el, idx) => {
-        //cy.log(el.find('td > [class="product-name"]').text())
-        expect(el.find('td > [class="product-name"]').text()).includes('Cashews')
-    })
+            //cy.log(el.find('td > [class="product-name"]').text())
+            let finalProd =el.find('td > [class="product-name"]').text().split("-")
+            expect(products).to.include(finalProd[0].trim())
+        })
 
     cy.contains('Place Order').click()
     cy.wait(2000)
@@ -33,7 +57,6 @@ And("I Proceed to checkout", () => {
     cy.get('[type="checkbox"]').click()
     cy.contains('Proceed').click()
     cy.wait(1000)
-
 })
 
 
