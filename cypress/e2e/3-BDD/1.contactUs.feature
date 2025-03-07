@@ -1,11 +1,11 @@
 Feature: I want to verify web driver university contact us page
-
+    @sanity 
     Scenario: I want to verify page with valid data
         Given I navigate to web page url
         When I enter data for all fields
         And I click On submit Button
         Then I verify validation message
-
+@regression @smoke
     Scenario: I want to verify page with datatable
         Given I navigate to web page url
         When I enter data foe all fields from datatable
@@ -14,7 +14,7 @@ Feature: I want to verify web driver university contact us page
         And I click On submit Button
         Then I verify validation message
 
-
+@smoke @sanity
     Scenario Outline: I want to verify page with multiple user
         Given I navigate to web page url1
         When I enter data from datable fn=<fn> and ln=<ln> and email=<email> and message=<msg> to fill data

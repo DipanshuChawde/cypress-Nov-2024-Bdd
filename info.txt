@@ -32,3 +32,9 @@ package.json
 
 https://qaautomationlabs.com/cypress-13-integration-with-bdd-cucumber-pom/
 npm install --save-dev cypress-cucumber-preprocessor
+
+----------------------------------------------------------
+TAGS
+
+npx cypress run --e2e --env TAGS='@smoke' --browser edge --headed
+npx cypress run --e2e --env TAGS='@smoke or @sanity' --browser edge --headed 

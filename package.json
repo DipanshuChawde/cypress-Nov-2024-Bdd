@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:smoke":"npx cypress run --e2e --env TAGS='@smoke' --browser edge --headed",
+    "test:sanity" : "npx cypress run --e2e --env TAGS='@sanity' --browser edge --headed"
   },
   "author": "",
   "license": "ISC",
